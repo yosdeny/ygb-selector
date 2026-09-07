@@ -1,13 +1,15 @@
 <?php
 /**
  * Plugin Name: YGB Store Selector
- * Plugin URI:
+ * Plugin URI: https://github.com/yosdeny
  * Description: Muestra una ventana emergente para seleccionar una tienda o web, guarda la selección en una cookie y redirige al usuario a su url.
  * Version:     1.0.8
- * Requires at least: 6.9
+ * Requires at least: 7.0
+ * Tested up to: 7.1
  * Requires PHP: 8.0
+ * Tested PHP: 8.2
  * Author: YGB
- * Author URI:
+ * Author URI: https://github.com/yosdeny
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: ygb-selector

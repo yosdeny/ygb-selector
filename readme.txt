@@ -2,9 +2,11 @@
 Contributors: yosdeny
 Donate link: https://example.com/
 Tags: popup, cookies, selector, admin, customization
-Requires at least: 6.9
-Tested up to: 7.0
+Requires at least: 7.0
+Tested up to: 7.1
 Stable tag: 1.0.8
+Requires PHP: 8.0
+Tested PHP: 8.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -62,9 +64,11 @@ This plugin is licensed under the GPLv2 or later.
 Contribuidores: yosdeny
 Enlace de donación: https://example.com/
 Etiquetas: popup, cookies, selector, administración, personalización
-Requiere al menos: 6.9
-Probado hasta: 7.0
+Requiere al menos: 7.0
+Probado hasta: 7.1
 Etiqueta estable: 1.0.8
+Requiere PHP: 8.0
+PHP probado: 8.2
 Licencia: GPLv2 o posterior
 Licencia URI: https://www.gnu.org/licenses/gpl-2.0.html
 
