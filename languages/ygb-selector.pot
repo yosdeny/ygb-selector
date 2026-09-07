@@ -1,0 +1,204 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: ygb-selector 1.0.0\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"X-Generator: Poedit 3.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ygb-selector.php
+msgid "YGB Store Selector"
+msgstr ""
+
+msgid "Displays a popup to select a store, saves the selection in a cookie, and redirects the user."
+msgstr ""
+
+#: includes/admin-page.php
+msgid "Selector de Tienda – YGB"
+msgstr ""
+
+msgid "(no existe)"
+msgstr ""
+
+msgid "Expirada o inexistente"
+msgstr ""
+
+msgid "N/A"
+msgstr ""
+
+msgid "Configurar formulario"
+msgstr ""
+
+msgid "Nombre"
+msgstr ""
+
+msgid "URL"
+msgstr ""
+
+msgid "Acciones"
+msgstr ""
+
+msgid "Eliminar"
+msgstr ""
+
+msgid "Nombre tienda"
+msgstr ""
+
+msgid "Nombre de la tienda"
+msgstr ""
+
+msgid "URL de la tienda"
+msgstr ""
+
+msgid "Añadir fila"
+msgstr ""
+
+msgid "Opciones de cookie y popup"
+msgstr ""
+
+msgid "Nombre de la cookie"
+msgstr ""
+
+msgid "Duración (días)"
+msgstr ""
+
+msgid "Dominio de cookie"
+msgstr ""
+
+msgid "Mostrar popup"
+msgstr ""
+
+msgid "Título del popup"
+msgstr ""
+
+msgid "Texto inicial del selector"
+msgstr ""
+
+msgid "Color de fondo popup"
+msgstr ""
+
+msgid "Color de texto popup"
+msgstr ""
+
+msgid "Color del título popup"
+msgstr ""
+
+msgid "Color de acento popup (bordes)"
+msgstr ""
+
+msgid "Guardar configuración"
+msgstr ""
+
+msgid "Estado de la cookie"
+msgstr ""
+
+msgid "Cookie actual:"
+msgstr ""
+
+msgid "Tiempo restante:"
+msgstr ""
+
+msgid "Expira:"
+msgstr ""
+
+msgid "Dominio:"
+msgstr ""
+
+msgid "Limpiar cookie"
+msgstr ""
+
+msgid "Limpiar cookie de tienda"
+msgstr ""
+
+msgid "Exportar configuración"
+msgstr ""
+
+msgid "Exportar configuración (JSON)"
+msgstr ""
+
+msgid "Importar configuración"
+msgstr ""
+
+msgid "Archivo JSON de configuración"
+msgstr ""
+
+msgid "¿Seguro que quieres borrar todas las opciones? Esta acción no se puede deshacer."
+msgstr ""
+
+msgid "¿Seguro que quieres borrar todas las tiendas? Esta acción no se puede deshacer."
+msgstr ""
+
+msgid "Borrar configuración y dejar limpio"
+msgstr ""
+
+msgid "Borrar solo tiendas"
+msgstr ""
+
+#: includes/admin-settings.php
+msgid "Configuración guardada correctamente."
+msgstr ""
+
+msgid "Cookie eliminada correctamente en este navegador."
+msgstr ""
+
+msgid "No se subió ningún archivo."
+msgstr ""
+
+msgid "El archivo es demasiado grande (máximo 1MB)."
+msgstr ""
+
+msgid "Tipo de archivo inválido. Debe ser JSON."
+msgstr ""
+
+msgid "Configuración importada correctamente."
+msgstr ""
+
+msgid "Archivo inválido."
+msgstr ""
+
+msgid "Todas las opciones del plugin han sido eliminadas. El plugin está limpio."
+msgstr ""
+
+msgid "Las tiendas han sido eliminadas, pero se mantienen los colores y textos."
+msgstr ""
+
+msgid "Selector de Tienda"
+msgstr ""
+
+#: includes/popup.php
+msgid "Selecciona tu tienda"
+msgstr ""
+
+msgid "Elige una tienda"
+msgstr ""
+
+msgid "Selector de tiendas"
+msgstr ""
+
+#: includes/ajax.php
+msgid "URL inválida"
+msgstr ""
+
+msgid "URL no permitida"
+msgstr ""
+
+msgid "Cookie fijada"
+msgstr ""
+
+msgid "Cookie eliminada"
+msgstr ""
+
+#: includes/utils.php
+msgid "Redirigiendo a tu tienda…"
+msgstr ""
+
+msgid "Error al fijar la cookie. Redirigiendo…"
+msgstr ""
+
+msgid "Error de conexión. Redirigiendo…"
+msgstr ""
+
+#: includes/admin-settings.php
+msgid "Selector YGB"
+msgstr ""

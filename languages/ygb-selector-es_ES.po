@@ -1,0 +1,203 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: ygb-selector 1.0.0\n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ygb-selector.php
+msgid "YGB Store Selector"
+msgstr "Selector de Tienda YGB"
+
+msgid "Displays a popup to select a store, saves the selection in a cookie, and redirects the user."
+msgstr "Muestra un popup para seleccionar una tienda, guarda la selección en una cookie y redirige al usuario."
+
+#: includes/admin-page.php
+msgid "Selector de Tienda – YGB"
+msgstr "Selector de Tienda – YGB"
+
+msgid "(no existe)"
+msgstr "(no existe)"
+
+msgid "Expirada o inexistente"
+msgstr "Expirada o inexistente"
+
+msgid "N/A"
+msgstr "N/D"
+
+msgid "Configurar formulario"
+msgstr "Configurar formulario"
+
+msgid "Nombre"
+msgstr "Nombre"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "Acciones"
+msgstr "Acciones"
+
+msgid "Eliminar"
+msgstr "Eliminar"
+
+msgid "Nombre tienda"
+msgstr "Nombre tienda"
+
+msgid "Nombre de la tienda"
+msgstr "Nombre de la tienda"
+
+msgid "URL de la tienda"
+msgstr "URL de la tienda"
+
+msgid "Añadir fila"
+msgstr "Añadir fila"
+
+msgid "Opciones de cookie y popup"
+msgstr "Opciones de cookie y popup"
+
+msgid "Nombre de la cookie"
+msgstr "Nombre de la cookie"
+
+msgid "Duración (días)"
+msgstr "Duración (días)"
+
+msgid "Dominio de cookie"
+msgstr "Dominio de cookie"
+
+msgid "Mostrar popup"
+msgstr "Mostrar popup"
+
+msgid "Título del popup"
+msgstr "Título del popup"
+
+msgid "Texto inicial del selector"
+msgstr "Texto inicial del selector"
+
+msgid "Color de fondo popup"
+msgstr "Color de fondo popup"
+
+msgid "Color de texto popup"
+msgstr "Color de texto popup"
+
+msgid "Color del título popup"
+msgstr "Color del título popup"
+
+msgid "Color de acento popup (bordes)"
+msgstr "Color de acento popup (bordes)"
+
+msgid "Guardar configuración"
+msgstr "Guardar configuración"
+
+msgid "Estado de la cookie"
+msgstr "Estado de la cookie"
+
+msgid "Cookie actual:"
+msgstr "Cookie actual:"
+
+msgid "Tiempo restante:"
+msgstr "Tiempo restante:"
+
+msgid "Expira:"
+msgstr "Expira:"
+
+msgid "Dominio:"
+msgstr "Dominio:"
+
+msgid "Limpiar cookie"
+msgstr "Limpiar cookie"
+
+msgid "Limpiar cookie de tienda"
+msgstr "Limpiar cookie de tienda"
+
+msgid "Exportar configuración"
+msgstr "Exportar configuración"
+
+msgid "Exportar configuración (JSON)"
+msgstr "Exportar configuración (JSON)"
+
+msgid "Importar configuración"
+msgstr "Importar configuración"
+
+msgid "Archivo JSON de configuración"
+msgstr "Archivo JSON de configuración"
+
+msgid "¿Seguro que quieres borrar todas las opciones? Esta acción no se puede deshacer."
+msgstr "¿Seguro que quieres borrar todas las opciones? Esta acción no se puede deshacer."
+
+msgid "¿Seguro que quieres borrar todas las tiendas? Esta acción no se puede deshacer."
+msgstr "¿Seguro que quieres borrar todas las tiendas? Esta acción no se puede deshacer."
+
+msgid "Borrar configuración y dejar limpio"
+msgstr "Borrar configuración y dejar limpio"
+
+msgid "Borrar solo tiendas"
+msgstr "Borrar solo tiendas"
+
+#: includes/admin-settings.php
+msgid "Configuración guardada correctamente."
+msgstr "Configuración guardada correctamente."
+
+msgid "Cookie eliminada correctamente en este navegador."
+msgstr "Cookie eliminada correctamente en este navegador."
+
+msgid "No se subió ningún archivo."
+msgstr "No se subió ningún archivo."
+
+msgid "El archivo es demasiado grande (máximo 1MB)."
+msgstr "El archivo es demasiado grande (máximo 1MB)."
+
+msgid "Tipo de archivo inválido. Debe ser JSON."
+msgstr "Tipo de archivo inválido. Debe ser JSON."
+
+msgid "Configuración importada correctamente."
+msgstr "Configuración importada correctamente."
+
+msgid "Archivo inválido."
+msgstr "Archivo inválido."
+
+msgid "Todas las opciones del plugin han sido eliminadas. El plugin está limpio."
+msgstr "Todas las opciones del plugin han sido eliminadas. El plugin está limpio."
+
+msgid "Las tiendas han sido eliminadas, pero se mantienen los colores y textos."
+msgstr "Las tiendas han sido eliminadas, pero se mantienen los colores y textos."
+
+msgid "Selector de Tienda"
+msgstr "Selector de Tienda"
+
+#: includes/popup.php
+msgid "Selecciona tu tienda"
+msgstr "Selecciona tu tienda"
+
+msgid "Elige una tienda"
+msgstr "Elige una tienda"
+
+msgid "Selector de tiendas"
+msgstr "Selector de tiendas"
+
+#: includes/ajax.php
+msgid "URL inválida"
+msgstr "URL inválida"
+
+msgid "URL no permitida"
+msgstr "URL no permitida"
+
+msgid "Cookie fijada"
+msgstr "Cookie fijada"
+
+msgid "Cookie eliminada"
+msgstr "Cookie eliminada"
+
+#: includes/utils.php
+msgid "Redirigiendo a tu tienda…"
+msgstr "Redirigiendo a tu tienda…"
+
+msgid "Error al fijar la cookie. Redirigiendo…"
+msgstr "Error al fijar la cookie. Redirigiendo…"
+
+msgid "Error de conexión. Redirigiendo…"
+msgstr "Error de conexión. Redirigiendo…"
+
+#: includes/admin-settings.php
+msgid "Selector YGB"
+msgstr "Selector YGB"
