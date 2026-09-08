@@ -11,13 +11,20 @@ function ygb_selector_admin_page_html() {
     $popup_enabled= ygb_selector_popup_enabled();
     $cookie_name  = ygb_selector_get_cookie_name();
 
-    // Cookie state
-    $raw_cookie_val = $_COOKIE[$cookie_name] ?? '';
-    $raw_cookie_exp = $_COOKIE[$cookie_name . 'Expira'] ?? 0;
+    // Cookie state - Validated access to avoid XSS
+    $raw_cookie_val = '';
+    $raw_cookie_exp = 0;
+    if (isset($_COOKIE[$cookie_name]) && is_string($_COOKIE[$cookie_name])) {
+        $raw_cookie_val = sanitize_text_field($_COOKIE[$cookie_name]);
+    }
+    if (isset($_COOKIE[$cookie_name . 'Expira']) && is_numeric($_COOKIE[$cookie_name . 'Expira'])) {
+        $raw_cookie_exp = intval($_COOKIE[$cookie_name . 'Expira']);
+    }
+    
     $cookie_actual  = __('(no existe)', 'ygb-selector');
     $restante_str   = __('Expirada o inexistente', 'ygb-selector');
     $exp_date_str   = __('N/A', 'ygb-selector');
-    $cookie_dom_str = $cookie_domain ?: ($_SERVER['HTTP_HOST'] ?? '');
+    $cookie_dom_str = $cookie_domain ? esc_html($cookie_domain) : esc_html(wp_unslash($_SERVER['HTTP_HOST'] ?? ''));
 
     if (!empty($raw_cookie_val) && !empty($raw_cookie_exp)) {
         $cookie_expira   = intval($raw_cookie_exp);

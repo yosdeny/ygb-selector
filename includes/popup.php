@@ -11,11 +11,13 @@ function ygb_selector_popup_html() {
     
     $show = true;
     
-    if (!empty($_COOKIE[$cookie_name]) && !empty($_COOKIE[$cookie_name . 'Expira'])) {
+    // Validate cookie data before use to prevent XSS and type confusion
+    if (!empty($_COOKIE[$cookie_name]) && is_string($_COOKIE[$cookie_name]) 
+        && !empty($_COOKIE[$cookie_name . 'Expira']) && is_numeric($_COOKIE[$cookie_name . 'Expira'])) {
         $exp = intval($_COOKIE[$cookie_name . 'Expira']);
-        $stored_url = sanitize_text_field($_COOKIE[$cookie_name]);
+        $stored_url = esc_url_raw($_COOKIE[$cookie_name]);
         
-        if (time() < $exp) {
+        if (time() < $exp && $stored_url) {
             $tienda_existe = false;
             foreach ($stores as $store) {
                 if (isset($store['url']) && $store['url'] === $stored_url) {
@@ -57,7 +59,7 @@ function ygb_selector_popup_html() {
             </option>
           <?php endforeach; ?>
         </select>
-        <div id="ygb-selector-redirect-msg" aria-live="polite" style="display:none;"></div>
+        <div id="ygb-selector-redirect-msg" aria-live="polite"></div>
       </div>
     </div>
     <?php
