@@ -3,7 +3,7 @@
  * Plugin Name: YGB Store Selector
  * Plugin URI: https://github.com/yosdeny
  * Description: Muestra una ventana emergente para seleccionar una tienda o web, guarda la selección en una cookie y redirige al usuario a su url.
- * Version:     1.0.8
+ * Version:     1.0.9
  * Requires at least: 7.0
  * Tested up to: 7.1
  * Requires PHP: 8.0
@@ -20,9 +20,30 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'YGB_SELECTOR_VERSION', '1.0.8' );
+define( 'YGB_SELECTOR_VERSION', '1.0.9' );
 define( 'YGB_SELECTOR_PATH', plugin_dir_path( __FILE__ ) );
 define( 'YGB_SELECTOR_URL', plugin_dir_url( __FILE__ ) );
+
+// Custom capability for store management
+function ygb_selector_add_custom_caps() {
+	$role = get_role( 'administrator' );
+	if ( $role && ! $role->has_cap( 'ygb_manage_stores' ) ) {
+		$role->add_cap( 'ygb_manage_stores' );
+	}
+}
+register_activation_hook( __FILE__, 'ygb_selector_add_custom_caps' );
+
+function ygb_selector_remove_custom_caps() {
+	$role = get_role( 'administrator' );
+	if ( $role && $role->has_cap( 'ygb_manage_stores' ) ) {
+		$role->remove_cap( 'ygb_manage_stores' );
+	}
+}
+register_deactivation_hook( __FILE__, 'ygb_selector_remove_custom_caps' );
+
+function ygb_selector_can_manage_stores() {
+	return current_user_can( 'ygb_manage_stores' ) || current_user_can( 'manage_options' );
+}
 
 // Includes
 require_once YGB_SELECTOR_PATH . 'includes/utils.php';
@@ -37,7 +58,7 @@ function ygb_selector_admin_menu() {
 	add_menu_page(
 		'YGB Store Selector',            // page title
 		'YGB Selector',                  // menu title
-		'manage_options',                // capability
+		'ygb_manage_stores',             // capability (custom)
 		'ygb-selector',                  // menu slug
 		'ygb_selector_admin_page_html',  // callback
 		'dashicons-store',               // icon
@@ -165,7 +186,7 @@ function ygb_selector_sanitize_store_name( $name ) {
 // Guardado de cookies (formulario separado)
 // ------------------------------------------
 function ygb_selector_admin_save_cookies() {
-	if ( ! current_user_can( 'manage_options' ) ) {
+	if ( ! ygb_selector_can_manage_stores() ) {
 		return;
 	}
 	if ( ! isset( $_POST['ygb_selector_save_cookies'] ) ) {
@@ -195,7 +216,7 @@ add_action( 'admin_init', 'ygb_selector_admin_save_cookies' );
 // Guardado principal (tiendas + visual)
 // ------------------------------------------
 function ygb_selector_admin_save_main_settings() {
-	if ( ! current_user_can( 'manage_options' ) ) {
+	if ( ! ygb_selector_can_manage_stores() ) {
 		return;
 	}
 	if ( ! isset( $_POST['ygb_selector_save_settings'] ) ) {
@@ -258,7 +279,7 @@ add_action( 'admin_init', 'ygb_selector_admin_save_main_settings' );
 // Limpiar cookie manualmente
 // ------------------------------------------
 function ygb_selector_admin_clear_cookie() {
-	if ( ! current_user_can( 'manage_options' ) ) {
+	if ( ! ygb_selector_can_manage_stores() ) {
 		return;
 	}
 	if ( ! isset( $_POST['ygb_selector_clear_cookie'] ) ) {
@@ -294,7 +315,7 @@ function ygb_selector_allowed_keys() {
 // Exportar configuración
 // ------------------------------------------
 function ygb_selector_export_settings() {
-	if ( ! current_user_can( 'manage_options' ) ) {
+	if ( ! ygb_selector_can_manage_stores() ) {
 		return;
 	}
 	if ( ! isset( $_POST['ygb_selector_export_settings'] ) ) {
@@ -307,6 +328,9 @@ function ygb_selector_export_settings() {
 		$options[ $key ] = get_option( $key, '' );
 	}
 
+	// Security headers for export
+	header( 'X-Content-Type-Options: nosniff' );
+	header( 'Cache-Control: no-store, no-cache, must-revalidate, max-age=0' );
 	header( 'Content-Type: application/json; charset=utf-8' );
 	header( 'Content-Disposition: attachment; filename="ygb-selector-settings.json"' );
 	echo wp_json_encode( $options, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE );
@@ -318,7 +342,7 @@ add_action( 'admin_init', 'ygb_selector_export_settings' );
 // Importar configuración
 // ------------------------------------------
 function ygb_selector_import_settings() {
-	if ( ! current_user_can( 'manage_options' ) ) {
+	if ( ! ygb_selector_can_manage_stores() ) {
 		return;
 	}
 	if ( ! isset( $_POST['ygb_selector_import_settings'] ) ) {
@@ -367,8 +391,17 @@ function ygb_selector_import_settings() {
 		return;
 	}
 
+	// Schema validation: ensure only expected keys are present
 	$allowed = ygb_selector_allowed_keys();
+	$validated_data = array();
 	foreach ( $data as $key => $value ) {
+		if ( ! in_array( $key, $allowed, true ) ) {
+			continue; // Skip unknown keys to prevent property pollution
+		}
+		$validated_data[ $key ] = $value;
+	}
+
+	foreach ( $validated_data as $key => $value ) {
 		if ( in_array( $key, $allowed, true ) ) {
 			// Sanitizar según el tipo de opción para mayor seguridad
 			if ( in_array( $key, array( 'ygb_selector_stores' ), true ) ) {
@@ -410,7 +443,7 @@ add_action( 'admin_init', 'ygb_selector_import_settings' );
 // Resetear todas las opciones
 // ------------------------------------------
 function ygb_selector_admin_reset_settings() {
-	if ( ! current_user_can( 'manage_options' ) ) {
+	if ( ! ygb_selector_can_manage_stores() ) {
 		return;
 	}
 	if ( ! isset( $_POST['ygb_selector_reset_settings'] ) ) {
@@ -430,7 +463,7 @@ add_action( 'admin_init', 'ygb_selector_admin_reset_settings' );
 // Resetear solo las tiendas
 // ------------------------------------------
 function ygb_selector_admin_reset_stores() {
-	if ( ! current_user_can( 'manage_options' ) ) {
+	if ( ! ygb_selector_can_manage_stores() ) {
 		return;
 	}
 	if ( ! isset( $_POST['ygb_selector_reset_stores'] ) ) {

@@ -2,7 +2,7 @@
 if (!defined('ABSPATH')) exit;
 
 function ygb_selector_admin_page_html() {
-    if (!current_user_can('manage_options')) return;
+    if (!ygb_selector_can_manage_stores()) return;
 
     // Current data
     $stores       = ygb_selector_get_stores();

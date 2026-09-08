@@ -4,7 +4,7 @@ Donate link: https://example.com/
 Tags: popup, cookies, selector, admin, customization
 Requires at least: 7.0
 Tested up to: 7.1
-Stable tag: 1.0.8
+Stable tag: 1.0.9
 Requires PHP: 8.0
 Tested PHP: 8.2
 License: GPLv2 or later

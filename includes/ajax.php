@@ -62,6 +62,10 @@ function ygb_selector_set_cookie_ajax() {
         // Legacy fallback without samesite support
     }
 
+    // Security headers for AJAX response
+    header('X-Content-Type-Options: nosniff');
+    header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
+
     wp_send_json_success(array(
         'message' => __('Cookie fijada', 'ygb-selector'),
         'url'     => $url,
@@ -75,6 +79,11 @@ add_action('wp_ajax_nopriv_ygb_selector_set_cookie','ygb_selector_set_cookie_aja
 function ygb_selector_clear_cookie_ajax() {
     check_ajax_referer('ygb_selector_nonce', 'nonce');
     ygb_selector_delete_store_cookie();
+    
+    // Security headers for AJAX response
+    header('X-Content-Type-Options: nosniff');
+    header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
+    
     wp_send_json_success(array('message' => __('Cookie eliminada', 'ygb-selector')));
 }
 add_action('wp_ajax_ygb_selector_clear_cookie','ygb_selector_clear_cookie_ajax');
