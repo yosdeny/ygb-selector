@@ -42,6 +42,14 @@ Yes, `.pot`, `.po`, and `.mo` files are included for English and Spanish.
 2. Admin settings page.
 
 == Changelog ==
+= 1.0.9 =
+* Security hardening: implemented custom capabilities (ygb_manage_stores) following least privilege principle.
+* Added explicit HTTP security headers (X-Content-Type-Options, Cache-Control) to AJAX responses and exports.
+* Implemented JSON schema validation to prevent property contamination attacks in configuration imports.
+* Removed all debugging logs for production environments.
+* Updated minimum requirements: WordPress 7.0+, PHP 8.0+.
+* Plugin now officially tested up to WordPress 7.1.
+
 = 1.0.8 =
 * Updated minimum requirements: WordPress 6.9+, PHP 8.0+.
 * Improved security in import/export (file size limit, wp_unslash usage).
@@ -54,6 +62,9 @@ Yes, `.pot`, `.po`, and `.mo` files are included for English and Spanish.
 * Initial release with popup selector, cookie management, and admin settings.
 
 == Upgrade Notice ==
+= 1.0.9 =
+Requires PHP 8.0 and WordPress 7.0 or higher. Critical security update: custom capabilities, HTTP security headers, JSON schema validation. Highly recommended for all users.
+
 = 1.0.8 =
 Requires PHP 8.0 and WordPress 6.9 or higher. Update recommended for security and compatibility.
 
@@ -66,7 +77,7 @@ Enlace de donación: https://example.com/
 Etiquetas: popup, cookies, selector, administración, personalización
 Requiere al menos: 7.0
 Probado hasta: 7.1
-Etiqueta estable: 1.0.8
+Etiqueta estable: 1.0.9
 Requiere PHP: 8.0
 PHP probado: 8.2
 Licencia: GPLv2 o posterior
@@ -104,6 +115,14 @@ Sí, se incluyen archivos `.pot`, `.po` y `.mo` para inglés y español.
 2. Página de ajustes en el admin.
 
 == Registro de cambios ==
+= 1.0.9 =
+* Fortalecimiento de seguridad: implementadas capacidades personalizadas (ygb_manage_stores) siguiendo el principio de menor privilegio.
+* Añadidas cabeceras HTTP de seguridad explícitas (X-Content-Type-Options, Cache-Control) en respuestas AJAX y exportaciones.
+* Implementada validación de esquema JSON para prevenir ataques de contaminación de propiedades en importaciones de configuración.
+* Eliminados todos los logs de depuración para entornos de producción.
+* Actualizados los requisitos mínimos: WordPress 7.0+, PHP 8.0+.
+* Plugin probado oficialmente hasta WordPress 7.1.
+
 = 1.0.8 =
 * Actualizados los requisitos mínimos: WordPress 6.9+, PHP 8.0+.
 * Mejoras de seguridad en importación/exportación (límite de tamaño, wp_unslash).
@@ -116,6 +135,9 @@ Sí, se incluyen archivos `.pot`, `.po` y `.mo` para inglés y español.
 * Versión inicial con popup selector, gestión de cookies y ajustes en el admin.
 
 == Aviso de actualización ==
+= 1.0.9 =
+Requiere PHP 8.0 y WordPress 7.0 o superior. Actualización crítica de seguridad: capacidades personalizadas, cabeceras HTTP de seguridad, validación de esquema JSON. Altamente recomendada para todos los usuarios.
+
 = 1.0.8 =
 Requiere PHP 8.0 y WordPress 6.9 o superior. Se recomienda actualizar por seguridad y compatibilidad.
 
