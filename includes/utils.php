@@ -27,7 +27,7 @@ function ygb_selector_popup_enabled() {
 function ygb_selector_delete_store_cookie() {
     $cookie_name = ygb_selector_get_cookie_name();
     $secure      = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off');
-    $host        = $_SERVER['HTTP_HOST'] ?? '';
+    $host        = sanitize_text_field(wp_unslash($_SERVER['HTTP_HOST'] ?? ''));
     $configured  = ygb_selector_get_cookie_domain();
     $expired     = time() - 3600;
 
@@ -49,12 +49,15 @@ function ygb_selector_delete_store_cookie() {
                 'samesite' => 'Lax',
             );
             setcookie($cookie_name, '', $opts);
+            // Also clear legacy expiration cookie if it exists
             setcookie($cookie_name . 'Expira', '', $opts);
         } else {
-            setcookie($cookie_name, '', $expired, '/', $domain, $secure);
+            setcookie($cookie_name, '', $expired, '/', $domain, $secure, true);
             setcookie($cookie_name . 'Expira', '', $expired, '/', $domain, $secure);
         }
     }
 
-    unset($_COOKIE[$cookie_name], $_COOKIE[$cookie_name . 'Expira']);
+    // Clear from PHP superglobal
+    if (isset($_COOKIE[$cookie_name])) unset($_COOKIE[$cookie_name]);
+    if (isset($_COOKIE[$cookie_name . 'Expira'])) unset($_COOKIE[$cookie_name . 'Expira']);
 }

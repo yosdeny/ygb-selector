@@ -392,8 +392,11 @@ function ygb_selector_import_settings() {
 				update_option( $key, $value ? 1 : 0 );
 			} elseif ( in_array( $key, array( 'ygb_selector_popup_bg_color', 'ygb_selector_popup_text_color', 'ygb_selector_popup_title_color', 'ygb_selector_popup_accent_color' ), true ) ) {
 				update_option( $key, sanitize_hex_color( $value ) );
+			} elseif ( in_array( $key, array( 'ygb_selector_cookie_domain' ), true ) ) {
+				// Domain needs special sanitization
+				update_option( $key, sanitize_text_field( $value ) );
 			} else {
-				// Text fields o dominio
+				// Text fields
 				update_option( $key, sanitize_text_field( $value ) );
 			}
 		}

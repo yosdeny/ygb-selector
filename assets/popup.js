@@ -24,13 +24,13 @@
       const url = this.value;
       if (!url) return;
       
-      // Deshabilitar select mientras procesa
+      // Disable select while processing
       this.disabled = true;
       this.style.opacity = '0.7';
       this.style.cursor = 'not-allowed';
       
       if (msg) {
-        msg.textContent = (ygbSelectorAjax && ygbSelectorAjax.labels && ygbSelectorAjax.labels.redirecting) || 'Redirigiendo...';
+        msg.textContent = (ygbSelectorAjax && ygbSelectorAjax.labels && ygbSelectorAjax.labels.redirecting) || '';
         msg.style.display = 'block';
       }
 
@@ -42,7 +42,7 @@
       fetch(ygbSelectorAjax.url, { method: 'POST', credentials: 'same-origin', body: formData })
         .then(r => {
           if (!r.ok) {
-            throw new Error('Error en la respuesta del servidor');
+            throw new Error('Server response error');
           }
           return r.json();
         })
@@ -50,29 +50,20 @@
           if (res && res.success) {
             window.location.href = url;
           } else {
-            if (msg) {
-              msg.textContent = (ygbSelectorAjax.labels && ygbSelectorAjax.labels.errorSet) || 'Error al fijar la cookie. Redirigiendo…';
-              msg.style.color = '#dc3232';
-            }
-            // Redirigir igual como fallback
+            // Fallback redirect without exposing error details
             setTimeout(() => {
               window.location.href = url;
-            }, 1000);
+            }, 500);
           }
         })
-        .catch((error) => {
-          console.error('YGB Selector Error:', error);
-          if (msg) {
-            msg.textContent = (ygbSelectorAjax.labels && ygbSelectorAjax.labels.errorConn) || 'Error de conexión. Redirigiendo…';
-            msg.style.color = '#dc3232';
-          }
-          // Redirigir como fallback después de 2 segundos
+        .catch(() => {
+          // Silent fallback redirect on connection error
           setTimeout(() => {
             window.location.href = url;
-          }, 2000);
+          }, 1000);
         })
         .finally(() => {
-          // Solo re-habilitar si aún estamos en la página
+          // Re-enable only if still on page
           setTimeout(() => {
             if (menu && menu.disabled) {
               menu.disabled = false;
@@ -80,7 +71,7 @@
               menu.style.cursor = '';
               menu.value = '';
             }
-          }, 3000);
+          }, 2000);
         });
     });
   }
