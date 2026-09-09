@@ -56,10 +56,11 @@ function ygb_selector_set_cookie_ajax() {
             'samesite' => 'Lax',
         );
         setcookie($cookie_name, $url, $opts);
-        // No longer set duplicate expiration cookie - use single cookie with proper options
+        // Also set expiration cookie for validation
+        setcookie($cookie_name . 'Expira', $expires_ts, $opts);
     } else {
         setcookie($cookie_name, $url, $expires_ts, '/', $cookie_domain, $secure, true);
-        // Legacy fallback without samesite support
+        setcookie($cookie_name . 'Expira', $expires_ts, '/', $cookie_domain, $secure);
     }
 
     // Security headers for AJAX response
